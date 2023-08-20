@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 
@@ -66,5 +67,18 @@ public class MemberController {
             memberRepository.save(member);
         }
         return "redirect:/members/" + member.getId();
+    }
+
+    @GetMapping("/members/{id}/delete")
+    public String delete(@PathVariable Long id, RedirectAttributes rttr) {
+        log.info("Delete Member Request: " + id);
+        Member target = memberRepository.findById(id).orElse(null);
+        if (target != null) {
+            memberRepository.delete(target);
+            log.info("Successfully delete member: " + target.toString());
+            rttr.addFlashAttribute("member_deleted", "Successfully a member delete");
+        }
+        return "redirect:/members";
+
     }
 }
