@@ -11,10 +11,10 @@
   * 노출되는 이름을 바꾸고 싶다면, DisplayName 어노테이션 사용
 
 ## Entity 다대일 구성
-```java
 * Comment는 Article에 속하는 Entity
   * DB 관점에서는 Comment는 Article을 참조하는 Entity
 * 멤버 변수 Article에 다대일 관계(@OneToMany)와 외래키(@JoinColumn) 명시
+```java
 // 클래스 어노테이션 생략
 public class Comment {
 
