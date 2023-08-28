@@ -33,5 +33,4 @@ public class Comment {
     @Column
     private String body;
 }
-
 ```
