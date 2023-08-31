@@ -26,3 +26,10 @@ INSERT INTO membeR(username, password) VALUES ('tiger', 'lion');
 INSERT INTO coffee(name, price) VALUES ('americano', '4500');
 INSERT INTO coffee(name, price) VALUES ('latte', '5000');
 INSERT INTO coffee(name, price) VALUES ('mocha', '5500');
+
+/* Pizza Table */
+INSERT INTO pizza(name, price) VALUES ('페페로니 피자', 25900);
+INSERT INTO pizza(name, price) VALUES ('불고기 피자', 29900);
+INSERT INTO pizza(name, price) VALUES ('고구마 피자', 30900);
+INSERT INTO pizza(name, price) VALUES ('포테이토 피자', 27900);
+INSERT INTO pizza(name, price) VALUES ('치즈 피자', 23900);
