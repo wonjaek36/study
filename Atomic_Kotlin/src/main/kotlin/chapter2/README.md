@@ -15,3 +15,20 @@
 
 ### Atom 17. 클래스 만들기
 
+---
+
+*Package: CreatingClasses*
+
+* 객체 생성과 멤버 함수 추가는 아래와 같이 한다.
+```kotlin
+class ClassName {
+    fun member_function() = "I'm member function"
+}
+
+fun main() {
+    val instance = ClassName()
+    println(instance.member_function())
+}
+```
+* "this" keyword를 통해서 객체 자신에게 접근 할 수 있다.
+  * Python self와 비슷, 그렇지만 Kotlin에서는 함수 파라미터에 this를 넣지 않음 
