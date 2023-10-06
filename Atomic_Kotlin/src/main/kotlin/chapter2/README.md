@@ -52,3 +52,27 @@ fun main() {
     c.percentFull = 50 // Cup 인스턴스인 c의 상태 변환
 }
 ```
+
+
+### Atom 19. 생성자
+
+*Package: Constructors*
+
+* 생성자에 정보를 제공해 객체를 초기화(프로퍼티 초기값)할 수 있다.
+* 이번 Atom에서는 기본 생성자만 이용
+```kotlin
+// 대표적인 예, 기본 생성자를 이용하여 객체 초기화
+class ExampleClass(
+    val name: String,
+    val age: Int,
+    val phone: String
+) {
+    fun describe() = 
+        "I'm $name, I'm $age years old. " +
+            "My phone number is $phone"
+}
+
+fun main() {
+    val wjkim = ExampleClass("Wonjae Kim", 3, "01099998888")
+}
+```
