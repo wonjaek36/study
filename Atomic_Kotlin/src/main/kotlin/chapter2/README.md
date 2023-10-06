@@ -31,4 +31,24 @@ fun main() {
 }
 ```
 * "this" keyword를 통해서 객체 자신에게 접근 할 수 있다.
-  * Python self와 비슷, 그렇지만 Kotlin에서는 함수 파라미터에 this를 넣지 않음 
+  * Python self와 비슷, 그렇지만 Kotlin에서는 함수 파라미터에 this를 넣지 않음
+
+
+### Atom 18. 프로퍼티
+
+---
+
+*Package: Properties*
+
+* 프로퍼티는 클래스의 변수로 클래스 상태를 의미한다고 볼 수 있다.
+```kotlin
+// percentFull 프로퍼티는 Cup 인스턴스의 상태를 의미
+class Cup {
+    var percentFull = 0
+}
+
+fun main() {
+    val c = Cup()
+    c.percentFull = 50 // Cup 인스턴스인 c의 상태 변환
+}
+```
