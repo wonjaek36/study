@@ -106,3 +106,25 @@ private fun recordAnimal(
 }
 ```
 
+### Atom 21. 패키지
+
+---
+
+*Package: Packages*
+
+* 프로그램을 구현할 때, 코드를 여러 번 반복하지 않는 것이 좋다. (**DRY 원칙**)
+* Java와 같이 Kotlin에서도 패키지를 제공하여 연관있는 코드를 묶어 놓는다
+* 내가 생성한 클래스를 가져다 사용하기 위해서는
+  * 같은 패키지 내라면, 그대로 사용
+  * 다른 패키지라면, 일반적으로 import 하고 사용한다.
+
+```Kotlin
+// ImportPythagorean.kt 일부
+
+import pythagorean.RightTriangle
+
+fun main() {
+    val rt = RightTriangle(3.0, 4.0)
+    // 생략...
+} 
+```
