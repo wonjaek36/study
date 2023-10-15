@@ -56,6 +56,8 @@ fun main() {
 
 ### Atom 19. 생성자
 
+---
+
 *Package: Constructors*
 
 * 생성자에 정보를 제공해 객체를 초기화(프로퍼티 초기값)할 수 있다.
@@ -76,3 +78,31 @@ fun main() {
     val wjkim = ExampleClass("Wonjae Kim", 3, "01099998888")
 }
 ```
+
+### Atom 20. 가시성 제한하기
+
+---
+
+*Package: Visibility*
+
+* Java와 비슷하게 접근 변경자로 함수 또는 변수들의 가시성을 통제한다.
+  * public, private, protected, internal
+* Class 내에 private이 붙은 변수/함수는 같은 class에 속한 멤버들만 접근 가능
+* private이 붙은 클래스 그리고 최상위 함수와 프로퍼티는 해당 파일 내에서만 접근 가능
+
+```kotlin
+// Visibility/RecordAnimal.kt 일부
+
+private var index = 0
+
+private class Animal(val name: String)
+
+private fun recordAnimal(
+    animal: Animal
+) {
+    println("Animal #$index: ${animal.name}")
+    index ++
+    // 파일 내 private 최상위 변수/함수에 접근 가능
+}
+```
+
