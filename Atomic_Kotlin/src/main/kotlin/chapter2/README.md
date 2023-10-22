@@ -128,3 +128,30 @@ fun main() {
     // 생략...
 } 
 ```
+
+### Atom 22. 테스트
+
+---
+
+*Package: Testing*
+
+* 코드를 수정할 때, 안전하게 수정하기 위해 테스트를 이용한다.
+* println을 이용한 부실한 방법이 아니라 JUnit, Kotest, Spek 등을 이용하면 안전하게 자동화할 수 있다.
+* 테스트 주도 개발법 (TDD) 참고
+
+참고: **infix** 키워드는 함수 작성을 후위순회 방식에서 중위순회로 변환해준다.
+
+즉, 함수(A, B)을 A 함수 B로 작성할 수 있게 해준다.
+```kotlin
+// appendix.atomictest eq 함수
+infix fun <T> T.eq(rval: T) {
+  test(this, rval) {
+    this == rval
+  }
+}
+
+fun main() {
+    val v1 = 47
+    v1 eq 47  // Test passed
+}
+```
