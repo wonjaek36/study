@@ -155,3 +155,24 @@ fun main() {
     v1 eq 47  // Test passed
 }
 ```
+
+
+### Atom 23. 예외
+
+---
+
+*Package: Exceptions*
+
+* Divide by Zero 등 상황에 따라 발생하는 에러를 처리하기 위해 이용
+* 발생하는 Exception을 통해 왜 에러가 발생했는지 알 수 있으며, 개발자가 메세지를 남겨 더 자세한 상황을 공유할 수 있음
+* Kotlin에서는 자바와 똑같이 try / catch 문을 이용
+  * 책에서는 appendix A에서 정의한 capture 이용
+
+```kotlin
+// Kotlin try / catch 
+try {
+    val i = 10 / 0 // Causing divide by zero
+} catch (e: ArithmeticException) {
+    // handling exception
+}
+```
