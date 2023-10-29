@@ -176,3 +176,33 @@ try {
     // handling exception
 }
 ```
+
+### Atom 24. 리스트
+
+--
+
+*Package: Lists*
+
+* 불변 리스트와 가변 리스트(Mutable List) 타입이 있다.
+  * 불변 리스트는 listOf<Type>으로 생성 (일반적으로 Type은 생략)
+  * 가변 리스트는 mutableListOf<Type>으로 생성
+* 불변 리스트 타입은 일반적으로 값을 넣거나 뺄 수 없다.
+  * 가변 변수에 정의했을 경우 연산자가 동작하는 것처럼 보일 수 있지만, 리스트는 불변이다. (아래 코드에서 확인)
+
+```kotlin
+// 불변 리스트
+val ints = listOf(1, 2, 3)
+// ints += 4  val cannot be reassigned
+
+// 가변 리스트
+val mutableInts = mutableListOf<Int>(1, 2, 3)
+mutableInts += 4
+mutableInts.add(5)
+
+// Lists/PlusAssignPuzzle.kt 참고
+var mutableVars = listOf(1, 2, 3)
+mutableVars += 4  // [1, 2, 3, 4]
+// 아래와 같은 코드
+val tmpList = mutableVars + 4
+mutableVars = tmpList
+```
