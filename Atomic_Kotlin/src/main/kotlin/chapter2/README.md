@@ -179,7 +179,7 @@ try {
 
 ### Atom 24. 리스트
 
---
+---
 
 *Package: Lists*
 
