@@ -304,3 +304,40 @@ val contacts = mapOf(
 contacts["1-234-567890"] eq Contact("Miffy", "1-234-567890")
 contacts["098-765-4321"] eq Contact("Cleo", "098-765-4321")
 ```
+
+### Atom 28. 프로퍼티 접근자(Property Accessor)
+
+---
+
+*Package: PropertyAccessors*
+
+- 프로퍼티 접근자를 이용하여 프로퍼티의 읽기/쓰기 기능을 커스터마이징할 수 있다.
+- 프로퍼티 바로 정의 뒤에 get() / set() 함수를 정의하여, 각각 게터와 세터를 정의
+- 세터와 게터를 private하게 정의할 수도 있다.
+```kotlin
+// Default.kt
+// Getter / Setter 정의
+class Default {
+  var i: Int = 0
+    // Property i's getter and setter
+    get() {
+      trace("get()")
+      return field
+    }
+
+    set(value) {
+      trace("set($value)")
+      field = value
+    }
+}
+
+// Counter.kt
+// private setter 정의
+// setter는 외부에서 호출되지 않는다.
+class Counter {
+  var value: Int = 0
+    private set
+
+  fun inc() = value++
+}
+```
