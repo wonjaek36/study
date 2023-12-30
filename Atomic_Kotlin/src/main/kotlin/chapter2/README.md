@@ -234,6 +234,7 @@ fun first(vararg numbers: Int) {
 ```
 
 ### Atom 26. 집합(Set)
+
 ---
 *Package: Sets*
 - Set 연산을 이용하여 수학의 집합을 구현할 수 있다.
@@ -270,3 +271,36 @@ intSet - setOf(0, 1, 9, 10) eq setOf(2, 3, 4)
 intSet.subtract(setOf(0, 1, 9, 10)) eq setOf(2, 3, 4)
 ```
 
+### Atom 27. 맵(Map)
+
+---
+
+*Package: Maps*
+
+- 키와 값을 연결하고, 키를 이용하여 값을 찾을 수 있다.
+- List, Set과 마찬가지로 immutable, mutable한 맵이 분리되어있다
+- 키와 값의 타입은 제한이 없어, 일반 클래스도 이용할 수 있다.
+```kotlin
+val constants = mapOf(
+  "Pi" to 3.141,
+  "e" to 2.718,
+  "phi" to 1.618
+)
+
+constants eq "{Pi=3.141, e=2.718, phi=1.618}"
+
+// 키에 맞는 값을 찾는다
+constants["e"] eq 2.718
+constants.keys eq setOf("Pi", "e", "phi")
+constants.values.toSet() eq setOf(3.141, 2.718, 1.618)
+
+// Contact 객체를 Map Value에 저장
+val miffy = Contact("Miffy", "1-234-567890")
+val cleo = Contact("Cleo", "098-765-4321")
+val contacts = mapOf(
+  miffy.phone to miffy,
+  cleo.phone to cleo)
+
+contacts["1-234-567890"] eq Contact("Miffy", "1-234-567890")
+contacts["098-765-4321"] eq Contact("Cleo", "098-765-4321")
+```
