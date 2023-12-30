@@ -206,3 +206,67 @@ mutableVars += 4  // [1, 2, 3, 4]
 val tmpList = mutableVars + 4
 mutableVars = tmpList
 ```
+
+### Atom 25. 가변 인자 목록
+
+---
+
+*Package: Varargs*
+
+* 함수에 vararg 키워드를 이용하면 임의의 개수로 인자를 받을 수 있다.
+* 다만, 선언된 인자가 하나만 있어 한 타입의 인자만 0~N개 를 받을 수 있다.
+* 타입은 Array로 취급되고 스프레드 연산자 (*) 를 이용하면 원소로 다른 함수에 넘길 수도 있다.
+
+```kotlin
+// 가변 인자 VarargSum.kt 중 일부
+fun sum(vararg numbers: Int): Int {
+    var total = 0
+    for (n in numbers) {
+        total += n
+    }
+    return total
+}
+
+// Spread 연산자 이용하여 가변 인자 전달
+fun first(vararg numbers: Int) {
+    sum(*numbers)
+}
+```
+
+### Atom 26. 집합(Set)
+---
+*Package: Sets*
+- Set 연산을 이용하여 수학의 집합을 구현할 수 있다.
+- Set은 중복을 허용하지 않고, 원소 추가, 검색 삭제가 가능하다.
+- 그리고 집합끼리읜 합(union), 교(intersection), 차(difference) 연산이 가능하다.
+- 실무적으로는 리스트의 원소 중복을 제거 하기 위해 많이 이용 (또는 리스트의 distinct 이용)
+```kotlin
+val intSet = setOf(1, 1, 2, 3, 9, 9, 4)
+// 중복 없음
+intSet eq setOf(1, 2, 3, 9, 4)
+
+// 순서 중요하지 않음
+setOf(1, 2) eq setOf(2, 1)
+
+// 원소 검사
+(9 in intSet) eq true
+(99 in intSet) eq false
+
+intSet.contains(9) eq true
+intSet.contains(99) eq false
+
+// 다른 집합 포함 여부
+intSet.containsAll(setOf(1, 9, 2)) eq true
+
+// 합 집합
+intSet.union(setOf(3, 4, 5, 6)) eq setOf(1, 2, 3, 4, 5, 6, 9)
+
+// 교 집합
+intSet.intersect(setOf(0, 1, 2, 7, 8)) eq setOf(1, 2)
+
+// 차 집합
+intSet subtract setOf(0, 1, 9, 10) eq setOf(2, 3, 4)
+intSet - setOf(0, 1, 9, 10) eq setOf(2, 3, 4)
+intSet.subtract(setOf(0, 1, 9, 10)) eq setOf(2, 3, 4)
+```
+
