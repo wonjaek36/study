@@ -52,3 +52,38 @@ val list = listOf(1, 2, 3)
 list.joinToString(". ", "", "!") eq "1. 2. 3!"
 list.joinToString(separator = ". ", postfix = "!") eq "1. 2. 3!"
 ```
+
+
+### Atom 32. 오버로딩(Overloading)
+
+---
+
+*Package: Overloading*
+
+- 파라미터 목록이 다른 여러 함수에 같은 이름을 사용하는 것을 "오버로딩"이라 함
+  - 함수의 시그니처는 함수 이름, 파라미터 목록, 반환 타입으로 구성
+  - 코틀린은 함수 시그니처를 이용하여 구분하기 때문에, 파라미터 목록이 다르면 다른 함수로 인식한다.
+- 오버로딩을 이용하면, 의미적으로 같은 작업을 다른 타입에 대해 같은 이름으로 정의할 수 있다.
+  - OverloadingAdd.kt 참고
+  
+```kotlin
+/*** Overloading ***/
+class Overloading {
+  // 함수의 시그니처는 함수 이름, 파라미터 목록, 반환 타입으로 구성
+  fun f() = 0
+  fun f(n: Int) = n + 2
+}
+
+/*** Overloading Add ***/
+fun addInt(i: Int, j: Int) = i + j
+fun addDouble(i: Double, j: Double) = i + j
+
+// 다른 타입에 대해 같은 이름으로 함수 정의
+fun add(i: Int, j: Int) = i + j
+fun add(i: Double, j: Double) = i + j
+
+fun main() {
+  addInt(5, 6) eq add(5, 6)
+  addDouble(56.23, 44.77) eq add(56.23, 44.77)
+}
+```
