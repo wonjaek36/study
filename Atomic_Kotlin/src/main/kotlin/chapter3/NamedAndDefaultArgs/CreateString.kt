@@ -1,4 +1,4 @@
-package chapter3.ExtensionFunctions
+package chapter3.NamedAndDefaultArgs
 
 import appendix.atomictest.eq
 
