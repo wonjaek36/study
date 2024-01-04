@@ -87,3 +87,40 @@ fun main() {
   addDouble(56.23, 44.77) eq add(56.23, 44.77)
 }
 ```
+
+### Atom 33. When 식
+
+---
+
+*Package: WhenExpressions*
+
+- When을 이용하면 if문을 더 아름답게 작성할 수 있다.
+- When 괄호 안에 비교를 하고 싶은 값을 작성하고, 각 조건에 대해 실행할 코드를 작성한다.
+- When은 값이 가질 수 있는 모든 값에 대해서 실행할 코드가 필요하다.
+  - 그렇지 않을 경우, when expression must be exhaustive 에러가 발생한다
+
+```kotlin
+// If와 When 구문 비교
+// Part of BmiWhen.kt
+fun bmiMetricOld(
+  kg: Double,
+  heightM: Double
+): String {
+  val bmi = kg / (heightM * heightM)
+  return if (bmi < 18.5) "Underweight"
+  else if (bmi < 25) "Normal weight"
+  else "Overweight"
+}
+
+fun bmiMetricWithWhen(
+  kg: Double,
+  heightM: Double
+): String {
+  val bmi = kg / (heightM * heightM)
+  return when {
+    bmi < 18.5 -> "Underweight"
+    bmi < 25 -> "Normal weight"
+    else -> "Overweight"
+  }
+}
+```
