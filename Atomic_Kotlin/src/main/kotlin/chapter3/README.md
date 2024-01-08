@@ -207,3 +207,40 @@ fun main() {
   map[korvo] = "Alien"
 }
 ```
+
+### Atom 36. 구조 분해 (Destructuring)
+
+---
+
+*Package: Destructuring*
+
+- Pair, Tuple 클래스의 값을 구조 분해를 통해 변수에 편하게 대입할 수 있다.
+- 데이터 클래스의 프로퍼티에도 구조 분해를 적용할 수 있다.
+
+```kotlin
+// PairDestructuring.kt 중 일부
+fun compute(input: Int): Pair<Int, String> =
+  if (input > 5)
+    Pair(input * 2, "High")
+  else
+    Pair(input * 2, "Low")
+
+val (value, description) = compute(7)
+value eq 14
+description eq "High"
+
+// ComputeDestructuring.kt 중 일부 / 데이터 클래스도 구조 분해가 가능하다
+data class Computation(
+  val data: Int,
+  val info: String
+)
+
+fun evaluate(input: Int) =
+  if (input > 5)
+    Computation(input * 2, "High")
+  else
+    Computation(input * 2, "Low")
+
+fun main() {
+  val (value, description) = evaluate(7)
+```
