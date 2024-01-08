@@ -156,3 +156,54 @@ enum class Direction(val notation: String) {
     }
 }
 ```
+
+### Atom 35. 데이터 클래스(Data Classes)
+
+---
+
+*Package: DataClasses*
+
+- 데이터 클래스를 이용하면 Boilerplate code를 줄일 수 있다.
+  - toString(), equals(), hashCode(), copy() 등
+  - equals()는 모든 프로퍼티를 비교하여 같은지 확인
+  - copy()를 이용하면 객체를 복사하고, 일부 프로퍼티를 변경할 수 있다.
+  - HashMap, HashSet을 이용하면, hashCode와 equals를 이용해 빠르게 데이터 클래스 객체를 검색
+
+```kotlin
+// Simple.kt 중 일부 / 자동 생성된 ToString
+data class Simple(
+  val arg1: String,
+  val arg2: Int
+)
+
+fun main() {
+  val s1 = Simple("Hi", 29)
+  val s2 = Simple("Hi", 29)
+  s1 eq "Simple(arg1=Hi, arg2=29)"
+  s1 eq s2
+}
+
+// CopyDataClass.kt 중 일부 / copy()를 이용한 객체 복사
+val contact = DetailedContact(
+  "Miffy",
+  "Miller",
+  "1-234-567890",
+  "1600 Amphitheatre Parkway")
+val newContact = contact.copy(
+  number = "098-765-4321",
+  address = "Brandschenkestrasse 110")
+
+// HashCode.kt 중 일부 / hashCode()를 이용한 검색
+
+data class Key(
+  val name: String,
+  val id: Int
+)
+
+fun main() {
+  val korvo: Key = Key("Korvo", 19)
+  korvo.hashCode() eq -2041757108
+  val map =  HashMap<Key, String>()
+  map[korvo] = "Alien"
+}
+```
