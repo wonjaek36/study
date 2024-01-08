@@ -124,3 +124,35 @@ fun bmiMetricWithWhen(
   }
 }
 ```
+
+### Atom 34. 이넘(Enum)
+
+---
+
+*Package: Enumerations*
+
+- Enum은 이름을 모아둔 것
+- Enum 클래스가 정의된 파일에서 enum 값을 임포트하여 사용할 수도 있다.
+- 일반 클래스와 동일하게, 멤버 함수와 멤버 프로퍼티를 정의할 수 있다.
+```kotlin
+//RecursiveEnumImport 일부
+import chapter3.Enumerations.Size.*
+
+enum class Size {
+  Tiny, Small, Medium, Large, Huge, Gigantic
+}
+
+// Direction
+// Enum 안에 멤버 함수 정의
+enum class Direction(val notation: String) {
+  North("N"), South("S"),
+  East("E"), West("W");
+  val opposite: Direction
+    get() = when(this) {
+      North -> South
+      South -> North
+      East -> West
+      West -> East
+    }
+}
+```
