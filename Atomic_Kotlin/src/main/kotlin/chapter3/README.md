@@ -244,3 +244,37 @@ fun evaluate(input: Int) =
 fun main() {
   val (value, description) = evaluate(7)
 ```
+
+### Atom 37. 널이 될 수 있는 타입 (Nullable)
+
+---
+
+*Package: NullableTypes*
+
+- 코틀린에서 기본적으로 타입 또는 클래스에서 널을 허용하지 않는다.
+  - 예) Int, Double, ... 등
+- 어떤 작업의 결과가 Null을 반환할 수 있다면, 타입에 ?를 붙여 널이 될 수 있는 타입으로 변경한다.
+  - 예) Int? Double? 
+- Null을 허용하지 않는 타입의 값은 Nullable 타입의 값으로 대입할 수 있다.
+  - 그 반대는 허용되지 않는다.
+
+```kotlin
+// NullableTypes.kt 중 일부
+val s1 = "abc"
+
+// 컴파일 오류
+// val s2: String = null
+
+val s3: String? = null
+val s4: String? = s1
+
+// 컴파일 오류
+// val s5: String = s4
+// s5: String / s4: String?  Type
+val s6 = s4
+
+s1 eq "abc"
+s3 eq null
+s4 eq "abc"
+s6 eq "abc"
+```
