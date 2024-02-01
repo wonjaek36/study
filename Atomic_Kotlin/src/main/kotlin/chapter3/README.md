@@ -278,3 +278,20 @@ s3 eq null
 s4 eq "abc"
 s6 eq "abc"
 ```
+
+### Atom. 38 안전한 호출과 엘비스 연산자 (Safe Calls and the Elvis Operator)
+
+---
+
+* Package: SafeCallsAndElvis
+
+- 널이 될 수 있는 타입에 안전 호출(.?)을 이용하면 널이 아닐 때만 호출된다.
+- 엘비스 연산자(?:)를 이용하면, 널일 때 기본 값을 사용하도록 할 수 있다.
+
+```kotlin
+val s: String? = null
+println(s?.length ?: 0) // 0
+
+val t: String? = "Hello"
+println(t?.length ?: 0) // 5
+```
