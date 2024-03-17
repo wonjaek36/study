@@ -318,3 +318,19 @@ capture {
   val s: String = x!!
 } eq "NullPointerException"
 ```
+
+### Atom 40. 확장 함수와 널이 될 수 있는 타입
+
+---
+
+* Package: NullableExtensions
+
+- 널이 될 수 있는 타입에 확장 함수를 정의할 수 있다.
+```kotlin
+fun String?.isNullOrEmpty(): Boolean =
+    this == null || this.isEmpty()
+
+fun main() {
+    "".isNullOrEmpty() eq true
+}
+```
