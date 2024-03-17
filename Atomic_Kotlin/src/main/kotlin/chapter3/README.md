@@ -295,3 +295,26 @@ println(s?.length ?: 0) // 0
 val t: String? = "Hello"
 println(t?.length ?: 0) // 5
 ```
+
+### Atom 39. 널 아님 단언 (Non-null Assertion)
+
+--- 
+
+* Package: NonNullAssertion
+
+- 널이 될 수 있는 타입이지만, 널이 아니란 걸 확신할 때 널 아님 단언(!!)을 사용
+- !!을 사용하면 컴파일러는 값이 널이 아니라고 확신하고, 널이 아닌 타입으로 변환을 시도한다.
+  - 그런데 값이 널이라면, NullPointerException이 발생한다.
+- 자바와 상호작용하기 위해 도입하였지만, 자주 사용하는 것은 권장하지 않는다.
+  - 안전한 호출과 엘비스 연산자를 권장
+
+```kotlin
+import atomictest.*
+
+val s: String? = "abc"
+s!!.length eq 3
+
+capture {
+  val s: String = x!!
+} eq "NullPointerException"
+```
