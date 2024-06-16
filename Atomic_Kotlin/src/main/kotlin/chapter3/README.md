@@ -380,3 +380,25 @@ val String.indices: IntRange
 val List<*>.indices: IntRange
   get() = 0 until size
 ```
+
+### Atom 43. Break And Continue
+
+---
+
+* Package: BreakAndContinue
+
+- 점프인 Break와 Continue
+- Java의 break / continue과 비슷
+- Kotlin에서는 Label을 지정하여 루프의 경계 중 원하는 곳으로 점프할 수 있다.
+
+```kotlin
+// 레이블을 이용한 break / continue
+// ForLabeled 중 일부
+outer@ for (c in 'a'..'e') {
+    for (i in 1..9) {
+        if (i == 5) continue@outer
+        if ("$c$i" == "c3") break@outer
+        strings.add("$c$i")
+    }
+}
+```
