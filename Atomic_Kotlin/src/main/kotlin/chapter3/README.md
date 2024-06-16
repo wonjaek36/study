@@ -359,3 +359,24 @@ class GenericHolder<T>(
 // GenericFunction.kt 중 일부
 fun <T> identity(arg: T): T = arg
 ```
+
+### Atom 42. 확장 프로퍼티
+
+---
+
+* Package: ExtensionProperties
+
+- 확장 함수를 정의하는 것처럼 확장 프로퍼티도 정의 가능하다.
+- 단, 커스텀 Getter를 정의하여, 접근할 때마다 프로퍼티 값을 계산하도록 한다.
+
+```kotlin
+// 확장 함수 정의
+// StringIndices.kt 중 일부
+val String.indices: IntRange
+  get() = 0 until length
+
+// 제너릭을 이용한 확장 함수 정의
+// ListOfStar 중 일부
+val List<*>.indices: IntRange
+  get() = 0 until size
+```
