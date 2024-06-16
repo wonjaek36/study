@@ -334,3 +334,28 @@ fun main() {
     "".isNullOrEmpty() eq true
 }
 ```
+
+### Atom 41. 제네릭스 소개
+
+---
+
+* Package: IntroGenerics
+
+- 제너릭스는 타입을 파라미터화한다.
+  - 제너릭스 함수는 여러 타입에 대해 동작할 수 있다.
+- 클래스에서 사용할 때, 클래스 이름 뒤에 플레이스 홀더를 추가한다. ex) class GenericHolder<T>
+- 함수에서 사용할 때는 함수 이름 앞에 플레이스 홀더를 추가한다. ex) fun <T> identity(arg: T): T
+
+```kotlin
+// 제너릭스 사용하는 클래스 정의
+// GenericHolder.kt 중 일부
+class GenericHolder<T>(
+  private val value: T
+) {
+  fun getValue(): T = value
+}
+
+// 제너릭스 사용하는 함수 정의
+// GenericFunction.kt 중 일부
+fun <T> identity(arg: T): T = arg
+```
