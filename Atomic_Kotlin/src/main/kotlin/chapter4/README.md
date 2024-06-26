@@ -24,6 +24,8 @@ val result = list.map({ "$[it]" })
 list.joinToString(" ") { "[$it]" }
 ```
 
+---
+
 ### Atom 45. 람다의 중요성
 
 ---
@@ -49,4 +51,69 @@ var sum = 0
 val divider = 5
 list.filter { it % divider == 0 }
   .forEach { sum += it }
+```
+
+---
+
+### Atom 46. 컬렉션에 대한 연산
+
+*Package: OperationsOnCollections*
+
+- Collection 타입에 사용할 수 있는 연산들을 일부 소개
+
+```kotlin
+// Create List with initialize lambda func
+// CreatingList.kt / ListInit.kt 중 일부
+val list = List(10) { 'a' + it } // ['a', 'b', 'c', ..., 'j']
+val mutableList = MutableList(5) { 10 * (i + 1) } // [10, 20, ..., 50]
+
+// filter or aggregate with lambda func
+// Predicates.kt / Partitions.kt 일부
+val list2 = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+list2.filter { it > 5 } // [6, 7, 8, 9, 10]
+list2.count { it > 5 } // 5
+list2.find { it > 5 } // 6
+list2.firstOrNull { it > 5 } // 6
+list2.lastOrNull { it < 5 } // 4
+
+// list2에 "it > 5"를 만족하는 값(it)이 하나라도 있으면 true 
+list2.any { it > 5 } // true
+// list2의 모든 원소가 "it > 5"를 만족한다면, true
+list2.all { it > 5 } // false
+// list2의 모든 원소가 "it < 0"를 만족한다면, true
+list2.none { it < 0 } // true
+
+val list3 = listOf(-3, -1, 5, 7, 10)
+val (positive, negative) = list3.partition { it > 0 }
+positive // [5, 7, 10]
+negative // [-3, -1]
+
+// sort or aggregate with lambda func
+// ByOperations.kt 일부
+data class Product(
+    val description: String,
+    val price: Double
+)
+
+val products = listOf(
+    Product("bread", 2.0),
+    Product("wine", 5.0)
+)
+// 가격 기중 내림차순 정렬
+products.sortedByDescending { it.price }
+// [Product(wine, 5.0), Product(bread, 2.0)]
+
+// products의 가격 합계
+products.sumOf { it.price } // 7.0
+
+// products 중 가격이 가장 낮은 상품
+products.minByOrNull { it.price } // 2.0
+
+// Take or Drop
+// TakeOrDrop.kt 일부
+val list4 = listOf('a', 'b', 'c', 'D', 'E')
+list4.take(3) // ['a', 'b', 'c']
+list4.takeLastWhile { it.isUpperCase() } // ['D', 'E']
+list4.drop(1) // ['b', 'c', 'D', 'E']
+list4.dropWhile { it.isLowerCase() } // ['D', 'E'] 
 ```
