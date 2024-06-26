@@ -60,6 +60,8 @@ list.filter { it % divider == 0 }
 *Package: OperationsOnCollections*
 
 - Collection 타입에 사용할 수 있는 연산들을 일부 소개
+  - Collections 으로 List, Set, Map 등이 있다.
+  - 특이하게도, map과 filter 등의 함수는 set 과 map 구조에 적용할 경우 결과값이 List로 반환된다.
 
 ```kotlin
 // Create List with initialize lambda func
