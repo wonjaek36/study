@@ -57,6 +57,8 @@ list.filter { it % divider == 0 }
 
 ### Atom 46. 컬렉션에 대한 연산
 
+---
+
 *Package: OperationsOnCollections*
 
 - Collection 타입에 사용할 수 있는 연산들을 일부 소개
@@ -118,4 +120,34 @@ list4.take(3) // ['a', 'b', 'c']
 list4.takeLastWhile { it.isUpperCase() } // ['D', 'E']
 list4.drop(1) // ['b', 'c', 'D', 'E']
 list4.dropWhile { it.isLowerCase() } // ['D', 'E'] 
+```
+
+---
+
+### Atom 37. 멤버 참조
+
+---
+
+*Package: MemberReferences*
+
+- 함수 인자로 멤버 참조(함수, 프로퍼티, 생성자)를 호출할 수 있다.
+
+```kotlin
+// Boolean 프로퍼티 사용
+// PropertyReference.kt 일부
+data class Message(
+    val sender: String,
+    val text: String,
+    val isRead: Boolean
+)
+
+val unread = message.filterNot(Message::isRead)
+
+// 함수 사용
+// TopLevelFunctionRef.kt 일부
+fun ignore(message: VerboseMessage) = 
+    !message.isImportant() && message.sender in setOf("Boss", "Mom")
+
+msgs.filter(::ignore)
+msgs.filterNot(::ignore)
 ```
