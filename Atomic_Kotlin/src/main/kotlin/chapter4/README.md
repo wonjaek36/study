@@ -150,4 +150,14 @@ fun ignore(message: VerboseMessage) =
 
 msgs.filter(::ignore)
 msgs.filterNot(::ignore)
+
+// 생성자 참조
+data class Student(
+    val id: Int,
+    val name: String
+)
+
+val names = listOf("Alice", "Bob")
+names.mapIndexed(::Student) // Index 가 먼저 들어간다. 
+// [Student(1, "Alice"), Student(2, "Bob")]
 ```
