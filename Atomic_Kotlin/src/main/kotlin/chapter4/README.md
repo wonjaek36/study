@@ -124,7 +124,7 @@ list4.dropWhile { it.isLowerCase() } // ['D', 'E']
 
 ---
 
-### Atom 37. 멤버 참조
+### Atom 47. 멤버 참조
 
 ---
 
