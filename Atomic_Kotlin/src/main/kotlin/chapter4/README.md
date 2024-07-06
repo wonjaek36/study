@@ -161,3 +161,30 @@ val names = listOf("Alice", "Bob")
 names.mapIndexed(::Student) // Index 가 먼저 들어간다. 
 // [Student(1, "Alice"), Student(2, "Bob")]
 ```
+
+---
+
+### Atom 48. 고차 함수
+
+---
+
+*Package: HigherOrderFunctions*
+
+- 고차 함수 정의:
+  - 다른 함수를 인자로 받거나, 함수를 반환하는 함수
+- 위와 같은 함수를 구현할 수 있다면, 언어는 고차 함수를 지원한다.
+  - 함수형 언어에서는 익명 함수(람다)를 이용해서 많이 작업하므로, 고차 함수를 많이 활용한다.
+
+```kotlin
+// 가장 쉬운 예제
+// IsPlus.kt 일부
+
+val isPlus: (Int) -> Boolean = { it > 0 }
+listOf(1, 2, -3).any(isPlus) eq true
+
+// 함수 타입 정의는 (파라미터1, ...) -> 반환타입
+// CallingReference.kt 일부
+val helloWorld: () -> String = { "Hello, World!" }
+val sum: (Int, Int) -> Int = { x, y -> x + y }
+```
+
