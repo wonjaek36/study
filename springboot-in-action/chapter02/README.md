@@ -42,3 +42,25 @@ public class DesignTacoController {
 <!-- wrap은 Model에 담겨있는 객체입니다. -->
 
 ```
+
+## 2. 2. 폼 제출 처리하기
+
+design.html에서 제출한 폼을 processDesign 메소드로 받아서 처리합니다.
+그리고, 리다이렉트를 통해 orderForm을 호출하여 orderForm.html로 이동합니다.
+```java
+@PostMapping
+public String processDesign(Taco design) {
+    log.info("Processing design: " + design);
+    // redirect 사용 방법
+    return "redirect:/orders/current";
+}
+```
+
+마찬가지로 orderForm.html 에서 /orders에 POST 요청을 보내면 processOrder 메소드로 받아서 "/"로 리다이렉트 합니다.
+```java
+@PostMapping
+public String processOrder(Order order) {
+    log.info("Order submitted: " + order);
+    return "redirect:/";
+}
+```
