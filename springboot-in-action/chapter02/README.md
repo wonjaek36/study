@@ -127,4 +127,31 @@ thymeleaf에서 필드별 에러 메시지를 출력하기 위해서는 아래�
 <br />
 ```
 
+## 2. 4. 뷰 컨트롤러로 작업하기
+현재까지 @Controller 어노테이션을 이용해 컨트롤러를 만들고 http 요청을 처리하고, 뷰를 반환하였습니다.
+하지만, HomeController는 단순히 뷰를 반환하는 역할만 하기 때문에 Controller 대신 View Controller를 이용할 수 있습니다.
 
+WebMvcConfigurer 인터페이스를 구현해서 addViewControllers 메소드를 오버라이드하여 View Controller를 추가할 수 있습니다.
+아래 코드는 "/" 요청을 home.html로 리다이렉트 합니다. 
+```java
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("home");
+    }
+}
+```
+
+## 2. 5. 뷰 템플릿 라이브러리 선택하기
+스프링은 Thymeleaf 외에도 다양한 뷰 템플릿 라이브러리를 지원합니다.
+- FreeMarker
+- Groovy Template
+- javaServer Pages (JSP)
+- Mustache
+- Thymeleaf
+
+템플릿 캐싱을 사용하지 않으려면 application.properties에 아래와 같이 설정합니다.
+```properties
+spring.thymeleaf.cache=false
+```
