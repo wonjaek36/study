@@ -3,4 +3,9 @@ gradlew.bat
 build
 gradle/wrapper
 
+# emacs 
 *~
+\#*\#
+
+# python
+__pycache__
