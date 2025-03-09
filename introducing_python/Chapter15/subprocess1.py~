@@ -1,0 +1,4 @@
+import subprocess
+
+result = subprocess.getoutput('date')
+print(f"result: {result}")
