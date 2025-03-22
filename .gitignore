@@ -6,6 +6,7 @@ gradle/wrapper
 # emacs 
 *~
 \#*\#
+.\#*
 
 # python
 __pycache__
